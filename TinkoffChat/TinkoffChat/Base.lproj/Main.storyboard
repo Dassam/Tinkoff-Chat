@@ -50,8 +50,6 @@
                                 <state key="normal" title="Сохранить"/>
                                 <connections>
                                     <action selector="saveAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s7w-x7-4ze"/>
-                                    <action selector="saveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bwM-gP-re3"/>
-                                    <action selector="userDataSave:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EDE-VP-tCa"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Изображение профиля" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8br-9h-mNI">
