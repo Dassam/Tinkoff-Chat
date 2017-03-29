@@ -8,8 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ProfileViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    @IBAction func Back(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var userInfoField: UITextView!
@@ -45,7 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
         userInfoField.delegate = self
         self.userNameField.delegate = self
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard)))// for tapping
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.dismissKeyboard)))// for tapping
       }
 
     
@@ -64,7 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate,
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        _ = tapGestureRecognizer.view as! UIImageView
         
         let image = UIImagePickerController()
         image.delegate = self
