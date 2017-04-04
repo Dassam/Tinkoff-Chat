@@ -74,7 +74,8 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UINav
         
         self.messagesTableView.dataSource = self
         self.messagesTableView.delegate = self
-        //self.messagesTableView.estimatedRowHeight = 44
+        self.messagesTableView.estimatedRowHeight = 44
+        self.messagesTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func numberOfSections(in tableView: UITableView) -> Int

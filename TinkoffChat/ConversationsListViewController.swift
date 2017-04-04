@@ -84,10 +84,12 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
             ConversationCell(name: "Cnfmm", message: "i m rfrwfqff",  date: Date(), online: false, hasUnreadMesseges: true),
             ConversationCell(name: "Eeee", message: "goefwefwefwefaway",  date: Date(), online: false, hasUnreadMesseges: false)
             ]
-
+        
         self.tableUsersList.dataSource = self
         self.tableUsersList.delegate = self
         self.tableUsersList.estimatedRowHeight = 44
+        self.tableUsersList.rowHeight = UITableViewAutomaticDimension
+        
     }
     
     
@@ -128,21 +130,6 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
             cell.backgroundColor = UIColor.white
         }
     }
-    
-   /* func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if  segue.identifier == "OpenConversationSegue",
-            let destination = segue.destination as? ConversationViewController,
-            let index = tableUsersList.indexPathForSelectedRow {
-            if index.section == ONLINE {
-                let user = companionsOnline[index.row]
-                destination.user = user
-            } else {
-                let user = companionsOffline[index.row]
-                destination.user = user
-            }
-        }
-    }
-    */
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
