@@ -51,9 +51,9 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
     
     let ONLINE = 0
     let OFFLINE = 1
-    var companionsOnline = [ConversationCell]()
-    var companionsOffline = [ConversationCell]()
-    
+    var peersOnline = [ConversationCell]()
+    var peersOffline = [ConversationCell]()
+    var communicatorManager = CommunicatorManager()
     
     
     override func loadView()
@@ -65,18 +65,11 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        communicatorManager.delegate = self
         
-        companionsOnline =
-            [
-            ConversationCell(name: "rodip", message: "go gulyat",  date: Date(), online: true,hasUnreadMesseges: true),
-            ConversationCell(name: "Jake", message: "You r the best!",  date: Date(), online: true,hasUnreadMesseges: true),
-            ConversationCell(name: "man", message: "kak dela?",  date: Date(), online: true, hasUnreadMesseges: false),
-            ConversationCell(name: "Nokm", message: nil,  date: Date(), online: true, hasUnreadMesseges: false),
-            ConversationCell(name: "Bdnjneb", message: "Conversation",  date: Date(), online: true,hasUnreadMesseges: true),
-            ConversationCell(name: "BCiind", message: "kak dela?",  date: Date(), online: true, hasUnreadMesseges: false)
-        ]
+        peersOnline = []
         
-        companionsOffline = [
+        peersOffline = [
             ConversationCell(name: "Mike", message: "i m ok",  date: Date(), online: false, hasUnreadMesseges: true),
             ConversationCell(name: "Sara", message: "go away",  date: Date(), online: false, hasUnreadMesseges: false),
             ConversationCell(name: "Nplwn", message: "irrfrrfm ok",  date: Date(), online: false, hasUnreadMesseges: true),
@@ -101,9 +94,9 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
     func tableView(_ tableUsersList: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if section == ONLINE
-        {return companionsOnline.count}
+        {return peersOnline.count}
         else
-        {return companionsOffline.count}
+        {return peersOffline.count}
     }
     
     func tableView(_ tableUsersList: UITableView, titleForHeaderInSection section: Int) -> String?
@@ -116,13 +109,13 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
     
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        var user = companionsOnline[0]
+        var user: ConversationCell
         if indexPath.section == ONLINE
         {
-            user = companionsOnline[indexPath.row]
+            user = peersOnline[indexPath.row]
         } else
         {
-            user = companionsOffline[indexPath.row]
+            user = peersOffline[indexPath.row]
         }
         if user.online {
             cell.backgroundColor = UIColor.yellow
@@ -147,15 +140,12 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableUsersList.dequeueReusableCell(withIdentifier: "MessegeCell") as! CompanionCell
-        var user = companionsOnline[0]
+        var user: ConversationCell
         if indexPath.section == ONLINE
         {
-            user = companionsOnline[indexPath.row]
-        }
-            
-        else
-        {
-            user = companionsOffline[indexPath.row]
+            user = peersOnline[indexPath.row]
+        } else {
+            user = peersOffline[indexPath.row]
         }
         cell.nameLabel.text = user.name
         cell.messageLabel.text = user.message
@@ -183,5 +173,17 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
     
     
     override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
+    
 
+
+}
+
+extension ConversationsListViewController: CommunicatorManagerDelegate {
+    func updateConversationList() {
+        peersOnline = communicatorManager.getPeersOnline()
+        tableUsersList.reloadData()
+    }
+    func handleCommunicateError(error: Error) {
+        print("Error occured during communication \(error)")
+    }
 }

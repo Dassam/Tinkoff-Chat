@@ -12,6 +12,10 @@
 		5A161DD91E92DB3E0042ACAA /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A161DD81E92DB3E0042ACAA /* UserData.swift */; };
 		5A161DDB1E92E1290042ACAA /* DataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A161DDA1E92E1290042ACAA /* DataProtocol.swift */; };
 		5A161DDD1E92E4890042ACAA /* FileDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A161DDC1E92E4890042ACAA /* FileDataStore.swift */; };
+		5A39BEFF1E9D545600324BAC /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A39BEFE1E9D545600324BAC /* Communicator.swift */; };
+		5A39BF021E9D54B300324BAC /* MultipeerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A39BF011E9D54B300324BAC /* MultipeerCommunicator.swift */; };
+		5A39BF041E9D58F600324BAC /* CommunicatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A39BF031E9D58F600324BAC /* CommunicatorDelegate.swift */; };
+		5A39BF061E9D688100324BAC /* CommunicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A39BF051E9D688100324BAC /* CommunicatorManager.swift */; };
 		5A49BF061E6D6A91004DA414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A49BF051E6D6A91004DA414 /* AppDelegate.swift */; };
 		5A49BF081E6D6A91004DA414 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A49BF071E6D6A91004DA414 /* ProfileViewController.swift */; };
 		5A49BF0B1E6D6A91004DA414 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A49BF091E6D6A91004DA414 /* Main.storyboard */; };
@@ -29,6 +33,10 @@
 		5A161DD81E92DB3E0042ACAA /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		5A161DDA1E92E1290042ACAA /* DataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProtocol.swift; sourceTree = "<group>"; };
 		5A161DDC1E92E4890042ACAA /* FileDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDataStore.swift; sourceTree = "<group>"; };
+		5A39BEFE1E9D545600324BAC /* Communicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Communicator.swift; path = ../Communicator.swift; sourceTree = "<group>"; };
+		5A39BF011E9D54B300324BAC /* MultipeerCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerCommunicator.swift; sourceTree = "<group>"; };
+		5A39BF031E9D58F600324BAC /* CommunicatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicatorDelegate.swift; sourceTree = "<group>"; };
+		5A39BF051E9D688100324BAC /* CommunicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicatorManager.swift; sourceTree = "<group>"; };
 		5A49BF021E6D6A91004DA414 /* TinkoffChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A49BF051E6D6A91004DA414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A49BF071E6D6A91004DA414 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = TinkoffChat/ProfileViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +95,17 @@
 			name = Storybords;
 			sourceTree = "<group>";
 		};
+		5A39BF001E9D546000324BAC /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				5A39BEFE1E9D545600324BAC /* Communicator.swift */,
+				5A39BF011E9D54B300324BAC /* MultipeerCommunicator.swift */,
+				5A39BF031E9D58F600324BAC /* CommunicatorDelegate.swift */,
+				5A39BF051E9D688100324BAC /* CommunicatorManager.swift */,
+			);
+			name = Communication;
+			sourceTree = "<group>";
+		};
 		5A49BEF91E6D6A91004DA414 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				5A49BF051E6D6A91004DA414 /* AppDelegate.swift */,
+				5A39BF001E9D546000324BAC /* Communication */,
 				5A161DDE1E9406C90042ACAA /* Conversation */,
 				5A161DD71E92D8B50042ACAA /* DataManager */,
 				5A161DDF1E9407180042ACAA /* Storybords */,
@@ -196,11 +216,15 @@
 				5A82E8781E89C515002852FC /* TinkoffChat.xcdatamodeld in Sources */,
 				5A161DD61E92D87A0042ACAA /* OperationDataManager.swift in Sources */,
 				5A161DD51E92D87A0042ACAA /* GCDDataManager.swift in Sources */,
+				5A39BEFF1E9D545600324BAC /* Communicator.swift in Sources */,
 				5AB2D9551E865F77003C0939 /* ConversationsListViewController.swift in Sources */,
+				5A39BF021E9D54B300324BAC /* MultipeerCommunicator.swift in Sources */,
 				5A49BF061E6D6A91004DA414 /* AppDelegate.swift in Sources */,
+				5A39BF061E9D688100324BAC /* CommunicatorManager.swift in Sources */,
 				5A82E8841E8AF56D002852FC /* CompanionCell.swift in Sources */,
 				5A161DD91E92DB3E0042ACAA /* UserData.swift in Sources */,
 				5AB2D9531E865F1B003C0939 /* ConversationViewController.swift in Sources */,
+				5A39BF041E9D58F600324BAC /* CommunicatorDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
