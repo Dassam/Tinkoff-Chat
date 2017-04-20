@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 protocol MessageCellConfiguration: class
     {
-    var text : String? {get set}
-    var received : Bool {get set}
+        var text : String? {get set}
+        var received : Bool {get set}
     }
 
 
@@ -39,14 +40,19 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UINav
     
     @IBOutlet weak var messagesTableView: UITableView!
     
+    @IBOutlet weak var sendButton: UIButton!
+    
+    @IBOutlet weak var messageTextView: UITextField!
     
     var user:ConversationCellConfiguration = ConversationCell()
-    
-    var name: String = "" 
+    var name: String = ""
+    var session: MCSession?
+    var peerId: MCPeerID?
     var message: String = ""
     
+    var communicatorManager: CommunicatorManager = CommunicatorManager()
     
-    var Messeges = [MessegesCell]()
+    var messeges = [MessegesCell]()
     
     
     override func loadView()
@@ -55,57 +61,60 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UINav
     }
     
     
+    @IBAction func sendMessage(_ sender: UIButton)
+    {
+        let message = messageTextView.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        if message.isEmpty {
+            return
+        }
+        print("send message \(message)")
+        communicatorManager.sendMessage(message: message, to: name)
+        messeges.append(MessegesCell(text: message, received: false))
+        messagesTableView.reloadData()
+        messageTextView.text = ""
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        communicatorManager.delegate = self
         
         self.title = name
         
+        messagesTableView.dataSource = self
+        messagesTableView.delegate = self
+        messagesTableView.estimatedRowHeight = 44
+        messagesTableView.rowHeight = UITableViewAutomaticDimension
+        messagesTableView.estimatedSectionFooterHeight = 10
         
-        Messeges =
-            [
-                MessegesCell(text: "Hello",  received: true),
-                MessegesCell(text: "GoodBye",  received: false),
-                MessegesCell(text: "How are you",  received: true),
-                MessegesCell(text: "I am ok",  received: false),
-                MessegesCell(text: "Текст сообщения не должен заходить на последнюю четверть ширины ячейки.",  received: true),
-                MessegesCell(text: "Текст сообщения не должен заходить на первую четверть ширины ячейки.",  received: false)
-                ]
-        
-        self.messagesTableView.dataSource = self
-        self.messagesTableView.delegate = self
-        self.messagesTableView.estimatedRowHeight = 44
-        self.messagesTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func numberOfSections(in tableView: UITableView) -> Int
     {return 1}
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {return 6}
+    {return messeges.count}
     
-    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String?
+    {return " \n " }
    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         
-        if Messeges[indexPath.row].received
+        if messeges[indexPath.row].received
         {
              let cell = messagesTableView.dequeueReusableCell(withIdentifier: "UserMessegeCell") as! UserMessage
-            cell.textLabelMessage.text = Messeges[indexPath.row].text
+            cell.textLabelMessage.text = messeges[indexPath.row].text
             return cell
         }
         else
         {
             let cell = messagesTableView.dequeueReusableCell(withIdentifier: "FriendMessegeCell") as! FriendMessage
-            cell.textLabelMessage.text = Messeges[indexPath.row].text
+            cell.textLabelMessage.text = messeges[indexPath.row].text
             return cell
         }
             
     }
-        
-    
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,3 +126,18 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UINav
         
 }
 
+extension ConversationViewController: CommunicatorManagerDelegate {
+    func updateConversationList() {
+        
+    }
+    func handleCommunicateError(error: Error) {
+        print("Error occured during communication \(error)")
+    }
+    
+    func didRecieveMessage(text: String) {
+        DispatchQueue.main.async {
+            self.messeges.append(MessegesCell(text: text, received: true))
+            self.messagesTableView.reloadData()
+        }
+    }
+}

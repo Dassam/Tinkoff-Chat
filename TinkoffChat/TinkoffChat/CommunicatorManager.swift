@@ -8,10 +8,12 @@
 
 import Foundation
 import UIKit
+import MultipeerConnectivity
 
 protocol CommunicatorManagerDelegate: class {
     func updateConversationList()
     func handleCommunicateError(error: Error)
+    func didRecieveMessage(text: String)
 }
 
 class CommunicatorManager: NSObject, CommunicatorDelegate {
@@ -27,6 +29,14 @@ class CommunicatorManager: NSObject, CommunicatorDelegate {
     
     func getPeersOnline() -> [ConversationCell] {
         return peersOnline
+    }
+    
+    func getPeerIdForName(name: String) -> MCPeerID {
+        return communicator.getPeerIDFor(userId: name)!
+    }
+    
+    func getSessionForPeerId(peerId: MCPeerID) -> MCSession {
+        return communicator.getSessionFor(peer: peerId)
     }
 
     func findPeerByID(userID: String) -> Int {
@@ -47,6 +57,14 @@ class CommunicatorManager: NSObject, CommunicatorDelegate {
             peersOnline.append(cell)
         }
         delegate?.updateConversationList()
+    }
+    
+    func sendMessage(message: String, to userId: String) {
+        communicator.sendMessage(string: message, to: userId, completionHandler: nil)         
+    }
+    
+    func addSession(session: MCSession, peerId: MCPeerID) {
+        communicator.addSession(session: session, peerId: peerId)
     }
     
     func didLooseUser(userID: String)
@@ -72,5 +90,6 @@ class CommunicatorManager: NSObject, CommunicatorDelegate {
     func didReceiveMessage(text: String, fromUser: String, toUser:String)
     {
         print("didReceiveMessage \(text) \(fromUser) \(toUser)" )
+        delegate?.didRecieveMessage(text: text)
     }
 }

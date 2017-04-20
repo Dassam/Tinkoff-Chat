@@ -124,17 +124,29 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
         }
     }
     
+    func getPeer(byIndexPath indexPath: IndexPath) -> ConversationCell {
+        if (indexPath.section == ONLINE) {
+            return peersOnline[indexPath.row]
+        } else {
+            return peersOffline[indexPath.row]
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "OpenConversationSegue" {
             if let destination = segue.destination as? ConversationViewController {
-                let path = tableUsersList.indexPathForSelectedRow
-                let cell = tableUsersList.cellForRow(at: path!) as! CompanionCell
-                destination.name = cell.nameLabel.text!
+                let indexPath = tableUsersList.indexPathForSelectedRow
+                let cell = tableUsersList.cellForRow(at: indexPath!) as! CompanionCell
+                let name = cell.nameLabel.text!
+                destination.name = name
+                destination.user = getPeer(byIndexPath: indexPath!)
+                destination.peerId = communicatorManager.getPeerIdForName(name: name)
+                destination.session = communicatorManager.getSessionForPeerId(peerId: destination.peerId!)
+                destination.communicatorManager = communicatorManager
             }
         }
     }
-    
+
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -185,5 +197,9 @@ extension ConversationsListViewController: CommunicatorManagerDelegate {
     }
     func handleCommunicateError(error: Error) {
         print("Error occured during communication \(error)")
+    }
+    
+    func didRecieveMessage(text: String) {
+        // empty todo
     }
 }

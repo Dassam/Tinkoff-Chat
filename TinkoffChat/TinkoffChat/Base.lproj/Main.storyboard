@@ -30,7 +30,7 @@
         <!--Conversations List View Controller-->
         <scene sceneID="7eq-7x-Buf">
             <objects>
-                <viewController title="Conversations List View Controller" id="vj9-u3-cNk" customClass="ConversationsListViewController" customModule="TinkoffChat" sceneMemberID="viewController">
+                <viewController title="Conversations List View Controller" automaticallyAdjustsScrollViewInsets="NO" id="vj9-u3-cNk" customClass="ConversationsListViewController" customModule="TinkoffChat" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lat-hd-GEb"/>
                         <viewControllerLayoutGuide type="bottom" id="evA-mC-Ebj"/>
@@ -40,12 +40,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="320-3B-oGe">
-                                <rect key="frame" x="16" y="0.0" width="343" height="667"/>
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MessegeCell" id="uwO-5n-tfE" customClass="CompanionCell" customModule="TinkoffChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uwO-5n-tfE" id="npQ-aL-6Bo">
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="43"/>
@@ -98,11 +98,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="evA-mC-Ebj" firstAttribute="top" secondItem="320-3B-oGe" secondAttribute="bottom" id="7ZF-fI-OXJ"/>
                             <constraint firstItem="320-3B-oGe" firstAttribute="leading" secondItem="gqT-12-ccM" secondAttribute="leadingMargin" id="QA2-zJ-Nba"/>
                             <constraint firstAttribute="trailingMargin" secondItem="320-3B-oGe" secondAttribute="trailing" id="cHx-4H-Vbb"/>
                             <constraint firstItem="evA-mC-Ebj" firstAttribute="top" secondItem="320-3B-oGe" secondAttribute="bottom" id="r8S-p1-zm1"/>
-                            <constraint firstItem="320-3B-oGe" firstAttribute="top" secondItem="Lat-hd-GEb" secondAttribute="bottom" constant="-64" id="rtC-kn-kQS"/>
+                            <constraint firstItem="320-3B-oGe" firstAttribute="top" secondItem="Lat-hd-GEb" secondAttribute="bottom" id="rtC-kn-kQS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tinkoff Chat" id="Ejy-ur-e4t">
@@ -128,7 +127,7 @@
         <!--Name-->
         <scene sceneID="69V-pl-f7j">
             <objects>
-                <viewController id="GcH-GS-baG" customClass="ConversationViewController" customModule="TinkoffChat" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="GcH-GS-baG" customClass="ConversationViewController" customModule="TinkoffChat" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6uh-yf-7Kv"/>
                         <viewControllerLayoutGuide type="bottom" id="T2l-Ml-WeJ"/>
@@ -138,12 +137,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="f6G-GU-l5G">
-                                <rect key="frame" x="16" y="0.0" width="343" height="621"/>
+                                <rect key="frame" x="16" y="64" width="343" height="557"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendMessegeCell" id="YJQ-8e-HKX" customClass="FriendMessage" customModule="TinkoffChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="YJQ-8e-HKX" id="Cs3-fJ-528">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
@@ -171,7 +170,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserMessegeCell" id="wL5-Ht-Z0z" customClass="UserMessage" customModule="TinkoffChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="100" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wL5-Ht-Z0z" id="x0n-yB-r6T">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
@@ -213,6 +212,9 @@
                                 <state key="normal" title="Send">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendMessage:" destination="GcH-GS-baG" eventType="touchUpInside" id="udg-Uz-CUV"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Oy-dF-1VO">
                                 <rect key="frame" x="16" y="629" width="299" height="30"/>
@@ -226,7 +228,7 @@
                             <constraint firstItem="T2l-Ml-WeJ" firstAttribute="top" secondItem="2Oy-dF-1VO" secondAttribute="bottom" constant="8" id="37b-KW-H3a"/>
                             <constraint firstItem="f6G-GU-l5G" firstAttribute="centerX" secondItem="zr0-BJ-jHn" secondAttribute="centerX" id="3Bu-r0-gB8"/>
                             <constraint firstItem="5MK-oL-bVS" firstAttribute="top" secondItem="f6G-GU-l5G" secondAttribute="bottom" constant="8" id="Iy8-qw-BHq"/>
-                            <constraint firstItem="f6G-GU-l5G" firstAttribute="top" secondItem="6uh-yf-7Kv" secondAttribute="bottom" constant="-64" id="Kth-Hi-Uyi"/>
+                            <constraint firstItem="f6G-GU-l5G" firstAttribute="top" secondItem="6uh-yf-7Kv" secondAttribute="bottom" id="Kth-Hi-Uyi"/>
                             <constraint firstItem="5MK-oL-bVS" firstAttribute="leading" secondItem="2Oy-dF-1VO" secondAttribute="trailing" constant="8" id="NLO-j2-b3l"/>
                             <constraint firstItem="T2l-Ml-WeJ" firstAttribute="top" secondItem="5MK-oL-bVS" secondAttribute="bottom" constant="8" id="OuP-1G-2ir"/>
                             <constraint firstAttribute="leadingMargin" secondItem="2Oy-dF-1VO" secondAttribute="leading" id="Plh-9V-gPA"/>
@@ -237,7 +239,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Name" id="Rjb-WB-gN6"/>
                     <connections>
+                        <outlet property="messageTextView" destination="2Oy-dF-1VO" id="MQK-tA-88o"/>
                         <outlet property="messagesTableView" destination="f6G-GU-l5G" id="rAg-zX-rIo"/>
+                        <outlet property="sendButton" destination="5MK-oL-bVS" id="IYF-Yv-EGm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xgH-XW-3as" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -310,21 +314,21 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSm-qa-B3a">
-                                <rect key="frame" x="86" y="586" width="64.5" height="30"/>
+                                <rect key="frame" x="85.5" y="586" width="64" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="textColorChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jgs-2W-Z9T"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTX-r0-5EN">
-                                <rect key="frame" x="155.5" y="586" width="65" height="30"/>
+                                <rect key="frame" x="154.5" y="586" width="65" height="30"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="textColorChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A8u-ft-my3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juM-RQ-yHU">
-                                <rect key="frame" x="225.5" y="586" width="64" height="30"/>
+                                <rect key="frame" x="224.5" y="586" width="64.5" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="textColorChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6JS-vb-wMx"/>
@@ -337,14 +341,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="stI-Kd-alf">
-                                <rect key="frame" x="16" y="586" width="65" height="30"/>
+                                <rect key="frame" x="16" y="586" width="64.5" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
                                     <action selector="textColorChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HFZ-Fm-ceJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZt-3B-ava">
-                                <rect key="frame" x="294.5" y="586" width="64.5" height="30"/>
+                                <rect key="frame" x="294" y="586" width="65" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="textColorChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f8N-as-pkA"/>
