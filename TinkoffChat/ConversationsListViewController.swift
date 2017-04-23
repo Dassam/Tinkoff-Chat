@@ -69,14 +69,7 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
         
         peersOnline = []
         
-        peersOffline = [
-            ConversationCell(name: "Mike", message: "i m ok",  date: Date(), online: false, hasUnreadMesseges: true),
-            ConversationCell(name: "Sara", message: "go away",  date: Date(), online: false, hasUnreadMesseges: false),
-            ConversationCell(name: "Nplwn", message: "irrfrrfm ok",  date: Date(), online: false, hasUnreadMesseges: true),
-            ConversationCell(name: "Cdjrn", message: "frfrrffrfrfr away",  date: Date(), online: false, hasUnreadMesseges: false),
-            ConversationCell(name: "Cnfmm", message: "i m rfrwfqff",  date: Date(), online: false, hasUnreadMesseges: true),
-            ConversationCell(name: "Eeee", message: "goefwefwefwefaway",  date: Date(), online: false, hasUnreadMesseges: false)
-            ]
+        peersOffline = []
         
         self.tableUsersList.dataSource = self
         self.tableUsersList.delegate = self

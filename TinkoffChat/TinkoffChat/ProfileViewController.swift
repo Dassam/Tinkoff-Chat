@@ -25,6 +25,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         super.viewDidLoad()
         loadUserData()
         
+        userImageAvatar.layer.cornerRadius = 90
+        userImageAvatar.layer.masksToBounds = true
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         userImageAvatar.isUserInteractionEnabled = true
         userImageAvatar.addGestureRecognizer(tapGestureRecognizer)

@@ -18,7 +18,9 @@ class CompanionCell: UITableViewCell {
 class FriendMessage: UITableViewCell {
 
     @IBOutlet weak var textLabelMessage: UITextView!
-
+    
+    
+    
 }
 class UserMessage: UITableViewCell {
     
